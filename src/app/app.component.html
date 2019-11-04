@@ -1,0 +1,112 @@
+<div class="prin">
+    <!-- <div class="p-3">
+        <h1 class="text-light"> Sistema de agendamiento de citas</h1>
+
+    </div> -->
+    <div class="text-light text-right p-3">
+        <a (click)="mostra_ocultar()" class="text-light p-2" href="#">
+      Configuracion
+    </a>
+        <div class="card" id="caja" style="position: absolute;right:0;width:300px;display:none;z-index:2;">
+            <div class="card-body text-left text-dark">
+                Duración minima de citas
+                <!-- <input type="text" class="form-control"> -->
+                <select name="" id="" class="form-control" [(ngModel)]="selectedDuracion">
+          <option value="10">10 min</option>
+          <option value="15">15 min</option>
+          <option value="20">20 min</option>
+          <option value="25">25 min</option>
+          <option value="30" selected>30 min</option>
+          <option value="40">40 min</option>
+          <option value="50">50 min</option>
+          <option value="60">1 hora</option>
+        </select>
+                <button class="btn btn-primary btn-block m-1" (click)="save()"> Guardar</button>
+            </div>
+        </div>
+        <a href="" data-toggle="modal" data-target="#listasModal" class="text-light p-2">
+      Listado de citas
+    </a>
+    </div>
+    <div>
+        <div class="w-50 aling" style="z-index: 1;">
+            <div class="card text-left">
+                <div class="card-body">
+                    <h4 class="card-title text-center text-primary">AGENDA CITAS</h4>
+                    <br>
+                    <div class="row">
+                        <div class="col-6 p-1">
+                            <label for="">Nombre</label>
+                            <input type="text" class="form-control" [(ngModel)]="selectCitas.nombre" placeholder="Nombre"> </div>
+                        <div class="col-6 p-1"> <label for="">Primer apellido</label> <input type="text" class="form-control" [(ngModel)]="selectCitas.primerapellido" placeholder="Primer apellido"> </div>
+                        <div class="col-6 p-1"> <label for="">Segundo apellido</label> <input type="text" class="form-control" [(ngModel)]="selectCitas.segundoapellido" placeholder="Segundo apellido"> </div>
+                        <div class="col-6 p-1"> <label for="">Teléfono</label> <input type="text" class="form-control" [(ngModel)]="selectCitas.telefono" placeholder="Telefono"> </div>
+                        <div class="col-6 p-1"> <label for="">Dirección</label> <input type="text" class="form-control" [(ngModel)]="selectCitas.direccion" placeholder="Dirección"> </div>
+                        <div class="col-6 p-1">
+                            <label for="">Fecha de agendamiento</label>
+                            <input type="date" class="form-control" [(ngModel)]="selectCitas.fecha" placeholder="Fecha de agendamiento">
+
+                        </div>
+                        <div class="col-6 p-1">
+                            <label for="">Hora de cita</label>
+                            <select name="" class="form-control" id="" [(ngModel)]="selectCitas.hora">
+                              <ng-container>
+                                <option value="{{ho}}" *ngFor="let ho of horaArray">
+                                  {{ho}}
+                                </option>
+                              </ng-container>
+              </select>
+                            <!-- <label for="">Hora de cita</label> <input type="time" class="form-control" [(ngModel)]="selectCitas.hora" placeholder="Hora">  -->
+                        </div>
+                    </div>
+                </div>
+                <button (click)="adddata()" class="btn btn-primary btb-block m-2">Agendar</button>
+                <br>
+            </div>
+
+            <!-- modal para mostrar los registros -->
+            <div class="modal fade" id="listasModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="exampleModalLabel"> Citas Agendadas </h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                        </div>
+                        <div class="modal-body">
+                            <div *ngIf="citasArray.length==0">
+                                <p>No se encontro citas</p>
+                            </div>
+                            <div *ngIf="citasArray.length>0">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>N°</th>
+                                            <th>Nombre</th>
+                                            <th> Apellidos</th>
+                                            <th> Fecha y hora de citas </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let ci of citasArray">
+                                            <td scope="row"> <span class="badge badge-primary"> {{ci.id}} </span> </td>
+                                            <td>{{ci.nombre}} </td>
+                                            <td>{{ci.primerapellido}} {{ci.segundoapellido}} </td>
+                                            <td>{{ci.fecha}} <span class="text-primary"> {{ci.hora}} </span> </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
